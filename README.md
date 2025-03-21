@@ -30,7 +30,7 @@ Recebe e exibe o resultado.
  
 
 Passos para Implementação:
-O servidor escuta em uma porta específica.
+O servidor escuta em uma porta específica (65432)
 
 Para cada cliente conectado, uma nova thread é criada.
 
