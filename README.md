@@ -1,15 +1,15 @@
 # Calculadora-Distribuida
 Atividade da materia de Sistemas paralelos e distribuidos
 
-Sockets e multithreading
+##Sockets e multithreading
 
 Foi solicitada a criação de um servidor de cálculo distribuído, onde clientes enviam operações matemáticas para o servidor, e ele retorna o resultado. O servidor deve ser capaz de lidar com múltiplos clientes simultaneamente usando threads.
 
-Objetivo:
+###Objetivo:
 Implementar um servidor que recebe operações matemáticas de múltiplos clientes, processa-as e retorna o resultado. O servidor deve usar multithreading para lidar com várias requisições ao mesmo tempo.
 
-Requisitos:
-Servidor:
+##Requisitos:
+###Servidor:
 
 Aceita conexões de múltiplos clientes.
 
@@ -19,7 +19,7 @@ Recebe operações matemáticas (ex: 2 + 3 ou 10/2) dos clientes.
 
 Processa a operação e envia o resultado de volta ao cliente.
 
-Cliente:
+###Cliente:
 
 Conecta-se ao servidor.
 
@@ -29,7 +29,7 @@ Recebe e exibe o resultado.
 
  
 
-Passos para Implementação:
+##Informações úteis 
 O servidor escuta em uma porta específica (65432)
 
 Para cada cliente conectado, uma nova thread é criada.
