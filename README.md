@@ -55,3 +55,19 @@ Execute o código do servidor. O servidor ficará ouvindo por novas conexões na
 
 ```bash
 python servidor.py
+```
+### 2. Inicie o cliente:
+Execute o código do cliente para conectar ao servidor e enviar uma operação matemática.
+
+```bash
+python cliente.py
+```
+
+### 3. Iniciar o cliente-teste:
+Execute o código do cliente-teste para conectar ao servidor e enviar uma lista de operações de uma só vez a fim de automatizar o teste de multithreading.
+
+```bash
+python cliente-teste.py
+```
+
+
