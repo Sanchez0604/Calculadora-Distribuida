@@ -1,5 +1,9 @@
 import socket
 import threading
+import logging
+
+# Configuração do logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def processar_operacao(operacao):
     """Processa a operação matemática e retorna o resultado."""
@@ -11,6 +15,8 @@ def processar_operacao(operacao):
 
 def lidar_com_cliente(cliente_socket, endereco):
     """Lida com a comunicação com um cliente."""
+    thread_id = threading.get_ident()
+    logging.info(f"Thread {thread_id} iniciada para {endereco}")
     print(f"Conexão de {endereco} estabelecida.")
     while True:
         dados = cliente_socket.recv(1024).decode()
@@ -19,6 +25,7 @@ def lidar_com_cliente(cliente_socket, endereco):
         resultado = processar_operacao(dados)
         cliente_socket.send(resultado.encode())
     print(f"Conexão de {endereco} encerrada.")
+    logging.info(f"Thread {thread_id} encerrada para {endereco}")
     cliente_socket.close()
 
 def iniciar_servidor(host, porta):
