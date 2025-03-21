@@ -1,39 +1,57 @@
-# Calculadora-Distribuida
-Atividade da materia de Sistemas paralelos e distribuidos
+# Calculadora Distribuída - Sistema Paralelo e Distribuído
 
-##Sockets e multithreading
+Este projeto implementa um servidor de cálculo distribuído, no qual múltiplos clientes podem enviar operações matemáticas para um servidor, que processa as requisições e retorna os resultados. A solução usa **Sockets** para comunicação entre cliente e servidor e **Multithreading** para lidar com múltiplos clientes simultaneamente.
 
-Foi solicitada a criação de um servidor de cálculo distribuído, onde clientes enviam operações matemáticas para o servidor, e ele retorna o resultado. O servidor deve ser capaz de lidar com múltiplos clientes simultaneamente usando threads.
+## Objetivo
 
-###Objetivo:
-Implementar um servidor que recebe operações matemáticas de múltiplos clientes, processa-as e retorna o resultado. O servidor deve usar multithreading para lidar com várias requisições ao mesmo tempo.
+Desenvolver um **servidor** capaz de processar requisições de operações matemáticas enviadas por **múltiplos clientes**. O servidor deve ser capaz de lidar com várias requisições simultâneas utilizando threads para garantir um processamento eficiente e escalável.
 
-##Requisitos:
-###Servidor:
+### Funcionalidades do Sistema:
 
-Aceita conexões de múltiplos clientes.
+- O **servidor** aceita conexões de múltiplos clientes ao mesmo tempo.
+- Cada **cliente** envia uma operação matemática para o servidor.
+- O **servidor** processa a operação em uma **thread separada** para cada cliente.
+- O **servidor** retorna o resultado da operação matemática ao cliente.
+- O **cliente** exibe o resultado recebido do servidor.
 
-Cada cliente é tratado em uma thread separada.
+## Requisitos
 
-Recebe operações matemáticas (ex: 2 + 3 ou 10/2) dos clientes.
+### Servidor
 
-Processa a operação e envia o resultado de volta ao cliente.
+- O servidor deve aceitar conexões simultâneas de múltiplos clientes.
+- Cada cliente é tratado por uma **thread separada**, garantindo o processamento paralelo.
+- O servidor escuta em uma porta específica (porta **65432**).
+- O servidor recebe operações matemáticas (exemplo: "2 + 3", "10 / 2", "5 * 6").
+- Após o processamento da operação, o servidor envia o **resultado** de volta ao cliente.
+- O servidor deve ser capaz de lidar com operações de soma, subtração, multiplicação e divisão.
 
-###Cliente:
+### Cliente
 
-Conecta-se ao servidor.
+- O cliente se conecta ao servidor via **socket**.
+- O cliente envia a operação matemática para o servidor em formato textual.
+- O cliente recebe o **resultado** da operação e exibe na tela.
 
-Envia operações matemáticas para o servidor.
+## Funcionamento
 
-Recebe e exibe o resultado.
+1. **Servidor**:
+   - O servidor fica ouvindo na porta **65432** esperando conexões de clientes.
+   - Para cada cliente conectado, o servidor cria uma nova **thread**.
+   - A thread recebe a operação matemática do cliente, processa e envia o resultado de volta.
+   
+2. **Cliente**:
+   - O cliente solicita a operação matemática ao servidor.
+   - O cliente exibe o resultado retornado pelo servidor.
 
- 
+## Tecnologias Utilizadas
 
-##Informações úteis 
-O servidor escuta em uma porta específica (65432)
+- **Sockets**: Para comunicação entre o servidor e os clientes.
+- **Multithreading**: Para garantir que o servidor consiga processar várias requisições simultaneamente sem bloquear.
+- **Python** (ou outra linguagem de sua preferência): Para implementação do servidor e cliente.
 
-Para cada cliente conectado, uma nova thread é criada.
+## Como Rodar o Projeto
 
-A thread processa as operações enviadas pelo cliente e retorna o resultado.
+### 1. Inicie o servidor:
+Execute o código do servidor. O servidor ficará ouvindo por novas conexões na porta 65432.
 
- 
+```bash
+python servidor.py
